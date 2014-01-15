@@ -1,0 +1,49 @@
+filetype on
+color candycode
+
+"########### G E N E R A L ###########" 
+
+" general settings
+let mapleader = ","	" change the mapleader from \ to ,
+
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+set hidden
+set nowrap				" don't wrap lines
+set tabstop		=3		" a tab is 3 spaces
+set backspace	=indent,eol,start	" allow backspacing over everything in insert mode
+set autoindent 		" always set autoindenting on
+set copyindent			" copy the previous indentation on autoindenting
+set number				" always show line numbers
+set shiftwidth	=3		" number of spaces to use for autoindenting
+set shiftround			" use multiple of shiftwidth when indenting with '<' and '>'
+set showmatch			" set showmatch
+set smartcase			" ignore case if search pattern is all lowercase, case sensitive otherwise
+set smarttab			" insert tabs on the start of a line according to shiftwidth, not tabstop
+set hlsearch			" highlight search terms
+set incsearch			" show search maches as you type
+
+
+"########### P L U G I N S ###########" 
+" NerdTree definitions
+nnoremap <silent> ,nn :NERDTreeToggle<CR>
+
+
+"####### E N D - P L U G I N S #######" 
+
+
+if !&diff	" setup for non vimdiff
+
+	" C Development specific settings
+	autocmd	FileType	c		source ~/.vim/cdev.vim
+	autocmd	FileType	cpp	source ~/.vim/cdev.vim
+	autocmd FileType	h		source ~/.vim/cdev.vim
+
+else 		" setup for vimdiff
+
+
+endif
+
+
