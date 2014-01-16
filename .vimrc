@@ -116,3 +116,12 @@ let g:ycm_collect_identifiers_from_tags_files=1
 
 " ######## F I L E T Y P E S ######## "
 " autocmd FileType make set listchars=ptab:>.
+
+
+" ######## C O L O R T H E M E S ######## "
+
+" molokai
+"let g:molokai_original = 1
+"color molokai
+
+color tomorrow
