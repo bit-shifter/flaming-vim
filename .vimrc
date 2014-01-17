@@ -76,6 +76,7 @@ nnoremap / /\v
 vnoremap / /\v
 
 " moving between splits
+nnoremap <leader>w <C-w>v<C-w>l
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
@@ -94,8 +95,9 @@ vnoremap <tab> %
 " save when focus of a file is lost
 au FocusLost * :wa
 
-" use jj as escape char - to end modes etc
+" use jj and kk as escape char - to end modes etc
 inoremap jj <ESC>
+inoremap kk <ESC>
 
 " clear search highlight with <leader>/
 nmap <silent> <leader>/ :nohlsearch<CR>
@@ -111,8 +113,12 @@ nnoremap <leader>v V`]
 " ######## P L U G I N S ######## "
 nmap <silent> <C-D> ;NERDTreeToggle<CR>
 
+
 " YouCompleteMe
 let g:ycm_collect_identifiers_from_tags_files=1
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+
 
 " ######## F I L E T Y P E S ######## "
 " autocmd FileType make set listchars=ptab:>.
