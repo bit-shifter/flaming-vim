@@ -59,6 +59,10 @@ set modelines=0
 set nobackup
 " set noswapfile
 
+" remove scrollbars vor macvim - might affect other gui versions as well
+set guioptions-=L
+set guioptions-=r
+
 
 
 " ######## E D I T I N G ######## "
