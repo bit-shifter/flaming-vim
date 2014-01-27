@@ -2,7 +2,7 @@ filetype off
 
 if !&diff
 
-	execute pathogen#infect()
+   execute pathogen#infect()
 
 endif
 
@@ -13,55 +13,73 @@ set nocompatible
 
 " change the mapleader from \ to ,
 
-let mapleader	= ","
+let mapleader  = ","
 
 " Quickly edit/reload the vimrc file
 
 nmap <silent> <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<CR>
-
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-
 set hidden
-set nowrap			" don't wrap lines
-set tabstop		=4	" a tab is four spaces
-set backspace	=indent,eol,start	" allow backspacing over everything in insert mode
-set autoindent		" always set autoindenting on
-set copyindent		" copy the previous indentation on autoindenting
-set number			" always show line numbers
-set shiftwidth	=4	" number of spaces to use for autoindenting
-set shiftround		" use multiple of shiftwidth when indenting with '<' and '>'
-set showmatch		" set show matching parenthesis
-set smartcase		" ignore case if search pattern is all lowercase, case sensitive otherwise
-set smarttab		" insert tabs on the start of a line according to shiftwidth, not tabstop
-set hlsearch		" highlight search terms
-set incsearch		" show search matches as you type
-set hlsearch		" highligts last search
-set gdefault		" sets global replace as default
-set history=1000	" rememmber more commands and search history
-set undolevels=1000	" use many muchos levels of undo
-set wildignore=*.swp,*.o,*.a,*.so
-set title			" change the terminals title
-set visualbell		" don't beep
-set noerrorbells	" don't beep
+set switchbuf=useopen     " reveal already opeend files from quickfix buf rather than
+                  " opening new buffers
+set nowrap        " don't wrap lines
+set tabstop    =3 " a tab is four spaces
+set expandtab
+set backspace  =indent,eol,start " allow backspacing over everything in insert mode
+set autoindent    " always set autoindenting on
+set copyindent    " copy the previous indentation on autoindenting
+set number        " always show line numbers
+set shiftwidth =3 " number of spaces to use for autoindenting
+set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
+set showmatch     " set show matching parenthesis
+set smartcase     " ignore case if search pattern is all lowercase, case sensitive otherwise
+set smarttab      " insert tabs on the start of a line according to shiftwidth, not tabstop
+set hlsearch      " highlight search terms
+set incsearch     " show search matches as you type
+set hlsearch      " highligts last search
+set gdefault      " sets global replace as default
+set history    =1000  " rememmber more commands and search history
+set undolevels =1000  " use many muchos levels of undo
+set wildignore =*.swp,*.o,*.a,*.so
+set title         " change the terminals title
+set visualbell    " don't beep
+set noerrorbells  " don't beep
 
 set showmode
 set showcmd
 set wildmenu
-set wildmode=list:longest
+set wildmode   =list:longest
 set cursorline
+set mouse=a
 set ruler
 "set laststatus=2
-set relativenumber	" show line numbers relative to cursor
-set undofile		" creates a <FILENAME>.un~ file to undo even after file was closed/reopened
 set modelines=0
 
+if v:version >= 703
+    set relativenumber  " show line numbers relative to cursor
+    set undofile        " creates a <FILENAME>.un~ file to undo even after file was closed/reopened
+    set undodir=~/.vim/.undo,~/tmp,/tmp
+endif
+
+set termencoding=utf-8
+set encoding=utf-8
+set listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
+set nolist
+
 set nobackup
-" set noswapfile
+set noswapfile
 
 " remove scrollbars vor macvim - might affect other gui versions as well
 set guioptions-=L
 set guioptions-=r
+
+if has("gui_running")
+   if has("gui_gtk2")
+      set guifont=Droid\ Sans\ Mono\ 11 linespace=0
+      "set guifont=Meslo\ 11 linespace=0
+   endif
+endif
 
 
 
@@ -70,7 +88,7 @@ set guioptions-=r
 "set listchars=trail:.,extends:#,nbsp:.
 
 
-set pastetoggle=<F2>	" turns off auto indenting in vim
+set pastetoggle=<F2> " turns off auto indenting in vim
 
 " ######## E F F I C I E N C Y  ######## "
 nnoremap ; :
@@ -95,6 +113,13 @@ nnoremap <right> <nop>
 " makes tab key match bracket pairs for moving around
 nnoremap <tab> %
 vnoremap <tab> %
+
+" <leader>i to toggle invisible characters
+nnoremap <leader>i :set list!<CR>
+
+" speed up viewport scrolling a bit
+nnoremap <C-e> 2<C-e>
+nnoremap <C-y> 2<C-y>
 
 " save when focus of a file is lost
 au FocusLost * :wa
