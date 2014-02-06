@@ -39,9 +39,9 @@ set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
 set hlsearch      " highligts last search
 set gdefault      " sets global replace as default
-set history=1000  " rememmber more commands and search history
-set undolevels=1000  " use many muchos levels of undo
-set wildignore=*.swp,*.o,*.a,*.so
+set history    =1000  " rememmber more commands and search history
+set undolevels =1000  " use many muchos levels of undo
+set wildignore =*.swp,*.o,*.a,*.so
 set title         " change the terminals title
 set visualbell    " don't beep
 set noerrorbells  " don't beep
@@ -50,7 +50,7 @@ set lazyredraw
 set showmode
 set showcmd
 set wildmenu
-set wildmode=list:longest
+set wildmode   =list:longest
 set cursorline
 set mouse=a
 set ruler
