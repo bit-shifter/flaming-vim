@@ -45,6 +45,7 @@ set wildignore=*.swp,*.o,*.a,*.so
 set title         " change the terminals title
 set visualbell    " don't beep
 set noerrorbells  " don't beep
+set lazyredraw
 
 set showmode
 set showcmd
@@ -55,6 +56,7 @@ set mouse=a
 set ruler
 "set laststatus=2
 set modelines=0
+set grepprg=ack
 
 if v:version >= 703
     set relativenumber  " show line numbers relative to cursor
@@ -142,6 +144,10 @@ nnoremap <leader>v V`]
 " ######## P L U G I N S ######## "
 nmap <silent> <C-D> ;NERDTreeToggle<CR>
 
+" Ack - search for word under cursor
+nnoremap <leader>a :Ack! "<cword>"<CR> 
+" use Ack! instead of Ack -- do not switch current buffer to first result
+cmap Ack Ack!
 
 " YouCompleteMe
 let g:ycm_collect_identifiers_from_tags_files=1
