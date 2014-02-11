@@ -83,8 +83,6 @@ if has("gui_running")
    endif
 endif
 
-
-
 " ######## E D I T I N G ######## "
 "set list
 "set listchars=trail:.,extends:#,nbsp:.
@@ -122,6 +120,9 @@ nnoremap <leader>i :set list!<CR>
 " speed up viewport scrolling a bit
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
+
+" shortcut to perforce edit current file
+" map <leader>p4 :!p4 edit <C-R>%<CR>
 
 " save when focus of a file is lost
 au FocusLost * :wa
