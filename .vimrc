@@ -147,14 +147,28 @@ nmap <silent> <C-D> ;NERDTreeToggle<CR>
 
 " Ack - search for word under cursor
 nnoremap <leader>a :Ack! "<cword>"<CR> 
-" use Ack! instead of Ack -- do not switch current buffer to first result
-cmap Ack Ack!
+" use ack! instead of Ack -- do not switch current buffer to first result
+cnoreabbrev ack Ack!
 
 " YouCompleteMe
-let g:ycm_collect_identifiers_from_tags_files=1
+let g:ycm_collect_identifiers_from_tags_files = 1
+" TODO: following option causes ycm to use working dir for relative path includes
+" might want to only use this if there is no .ycm_extra_conf.py in the current
+" buffers diretory - not sure how though
+let g:ycm_filepath_completion_use_working_dir = 1
+let g:ycm_error_symbol = '✗'
+let g:ycm_warning_symbol = '⚠'
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 
+" TagBar
+let g:tagbar_compact = 1
+nnoremap <leader>l :TagbarToggle<CR>
+
+" Man
+runtime ftplugin/man.vim
+nnoremap K :Man <cword><CR>
+nnoremap <leader>K :!man <cword><CR>
 
 " ######## F I L E T Y P E S ######## "
 " autocmd FileType make set listchars=ptab:>.
