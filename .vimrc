@@ -105,10 +105,10 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 " disable arrow keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
 
 " makes tab key match bracket pairs for moving around
 nnoremap <tab> %
