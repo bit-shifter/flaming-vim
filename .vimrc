@@ -148,7 +148,7 @@ nmap <silent> <C-D> ;NERDTreeToggle<CR>
 " Ack - search for word under cursor
 nnoremap <leader>a :Ack! "<cword>"<CR> 
 " use ack! instead of Ack -- do not switch current buffer to first result
-cnoreabbrev ack Ack!
+cnoreabbrev ack Ack! --ignore-file=match:.log
 
 " YouCompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -176,8 +176,10 @@ nnoremap <leader>K :!man <cword><CR>
 
 " ######## C O L O R T H E M E S ######## "
 
+if &diff
 " molokai
-"let g:molokai_original = 1
-"color molokai
-
-color tomorrow
+   let g:molokai_original = 1
+   color molokai
+else
+   color tomorrow
+endif
