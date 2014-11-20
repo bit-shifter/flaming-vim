@@ -21,7 +21,10 @@
 	url = https://github.com/majutsushi/tagbar.git
 [submodule "bundle/perforce"]
 	path = bundle/perforce
-	url = git://github.com/vim-scripts/perforce.vim.git
+   url = git://github.com/vim-scripts/perforce.vim.git
 [submodule "bundle/conque-term"]
 	path = bundle/conque-term
 	url = https://github.com/pthrasher/conqueterm-vim.git
+[submodule "bundle/rust"]
+	path = bundle/rust
+	url = git://github.com/wting/rust.vim.git
