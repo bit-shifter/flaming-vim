@@ -172,7 +172,7 @@ nnoremap K :Man <cword><CR>
 nnoremap <leader>K :!man <cword><CR>
 
 " Conque-term
-nnoremap :bash :ConqueTermSplit bash
+nnoremap :bash :ConqueTermSplit bash<CR>
 
 " ######## F I L E T Y P E S ######## "
 " autocmd FileType make set listchars=ptab:>.
