@@ -130,6 +130,7 @@ au FocusLost * :wa
 " use jj and kk as escape char - to end modes etc
 inoremap jj <ESC>
 inoremap kk <ESC>
+inoremap jk <ESC>
 
 " clear search highlight with <leader>/
 nmap <silent> <leader>/ :nohlsearch<CR>
@@ -169,6 +170,9 @@ nnoremap <leader>l :TagbarToggle<CR>
 runtime ftplugin/man.vim
 nnoremap K :Man <cword><CR>
 nnoremap <leader>K :!man <cword><CR>
+
+" Conque-term
+nnoremap :bash :ConqueTermSplit bash
 
 " ######## F I L E T Y P E S ######## "
 " autocmd FileType make set listchars=ptab:>.
