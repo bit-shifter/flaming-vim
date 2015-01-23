@@ -1,43 +1,46 @@
+set nocompatible
 filetype off
 
-if !&diff
+" figure out absolute path to vundlerc.vim and source it
+let vundlerc = fnamemodify(resolve(expand('$HOME/.vimrc')), ':h') . "/.vundlerc.vim"
+exec "source " . vundlerc 
 
-   execute pathogen#infect()
 
-endif
+" YCM configuration
+let g:ycm_extra_conf_globlist = ['~/Development/p4client/CDev/*','!~/*']
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_error_symbol = '✗'
+" let g:ycm_warning_symbol = '⚠'
+
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 
 syntax on
-filetype plugin indent on
-
-set nocompatible
 
 " change the mapleader from \ to ,
-
 let mapleader  = ","
-
+" 
 " Quickly edit/reload the vimrc file
-
 nmap <silent> <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
-
+" 
 set hidden
-set switchbuf=useopen     " reveal already opeend files from quickfix buf rather than
-                  " opening new buffers
+set switchbuf=useopen     " reveal already opened files from quickfix buf rather than opening new buffers
 set nowrap        " don't wrap lines
-set tabstop    =3 " a tab is four spaces
+set tabstop    =4 " a tab is four spaces
 set expandtab
-set backspace  =indent,eol,start " allow backspacing over everything in insert mode
 set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
 set number        " always show line numbers
-set shiftwidth =3 " number of spaces to use for autoindenting
+set shiftwidth =4 " number of spaces to use for autoindenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     " set show matching parenthesis
 set smartcase     " ignore case if search pattern is all lowercase, case sensitive otherwise
 set smarttab      " insert tabs on the start of a line according to shiftwidth, not tabstop
 set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
-set hlsearch      " highligts last search
 set gdefault      " sets global replace as default
 set history    =1000  " rememmber more commands and search history
 set undolevels =1000  " use many muchos levels of undo
@@ -46,17 +49,16 @@ set title         " change the terminals title
 set visualbell    " don't beep
 set noerrorbells  " don't beep
 set lazyredraw
+set ttyfast
 
-set showmode
 set showcmd
 set wildmenu
 set wildmode   =list:longest
 set cursorline
-set mouse=a
-set ruler
-"set laststatus=2
-set modelines=0
+" set mouse=a
+set laststatus=2
 set grepprg=ack
+set spelllang=en_gb
 
 if v:version >= 703
     set relativenumber  " show line numbers relative to cursor
@@ -65,50 +67,32 @@ if v:version >= 703
 endif
 
 set termencoding=utf-8
-set encoding=utf-8
-set listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
-set nolist
+set encoding=utf-8 nobomb
+set list
+set listchars=tab:▸\ ,trail:·,eol:¬,extends:#,nbsp:·
 
 set nobackup
 set noswapfile
 
 " remove scrollbars vor macvim - might affect other gui versions as well
-set guioptions-=L
-set guioptions-=r
-
-if has("gui_running")
-   if has("gui_gtk2")
-      set guifont=Droid\ Sans\ Mono\ 11 linespace=0
-      "set guifont=Meslo\ 11 linespace=0
-   endif
-endif
-
-" ######## E D I T I N G ######## "
-"set list
-"set listchars=trail:.,extends:#,nbsp:.
-
+" set guioptions-=L
+" set guioptions-=r
+" 
+" if has("gui_running")
+"    if has("gui_gtk2")
+"       set guifont=Droid\ Sans\ Mono\ 11 linespace=0
+"       "set guifont=Meslo\ 11 linespace=0
+"    endif
+" endif
 
 set pastetoggle=<F2> " turns off auto indenting in vim
 
 " ######## E F F I C I E N C Y  ######## "
 nnoremap ; :
-nnoremap j gj
-nnoremap k gk
-nnoremap / /\v
-vnoremap / /\v
 
-" moving between splits
-nnoremap <leader>w <C-w>v<C-w>l
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-" disable arrow keys
-"nnoremap <up> <nop>
-"nnoremap <down> <nop>
-"nnoremap <left> <nop>
-"nnoremap <right> <nop>
+" ######## S P L I T S ########
+nnoremap vsplit <C-w>s<C-w>j
+nnoremap hsplit <C-w>v<C-w>l
 
 " makes tab key match bracket pairs for moving around
 nnoremap <tab> %
@@ -121,18 +105,13 @@ nnoremap <leader>i :set list!<CR>
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
 
-" shortcut to perforce edit current file
-" map <leader>p4 :!p4 edit <C-R>%<CR>
-
 " save when focus of a file is lost
 au FocusLost * :wa
 
 " add syntax highlighting for gradle
 au BufRead,BufNewFile *.gradle setfiletype groovy
 
-" use jj and kk as escape char - to end modes etc
-inoremap jj <ESC>
-inoremap kk <ESC>
+" use jk to end modes etc
 inoremap jk <ESC>
 
 " clear search highlight with <leader>/
@@ -147,23 +126,17 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>v V`]
 
 " ######## P L U G I N S ######## "
-nmap <silent> <C-D> ;NERDTreeToggle<CR>
+nmap <silent> <C-n> :NERDTreeToggle<CR>
+
+" Open NERDTree automatically when Vim starts up if no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
 
 " Ack - search for word under cursor
 nnoremap <leader>a :Ack! "<cword>"<CR> 
 " use ack! instead of Ack -- do not switch current buffer to first result
-cnoreabbrev ack Ack! --ignore-file=match:.log
-
-" YouCompleteMe
-let g:ycm_collect_identifiers_from_tags_files = 1
-" TODO: following option causes ycm to use working dir for relative path includes
-" might want to only use this if there is no .ycm_extra_conf.py in the current
-" buffers diretory - not sure how though
-let g:ycm_filepath_completion_use_working_dir = 1
-let g:ycm_error_symbol = '✗'
-let g:ycm_warning_symbol = '⚠'
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+cnoreabbrev ack Ack! 
 
 " TagBar
 let g:tagbar_compact = 1
@@ -174,25 +147,13 @@ runtime ftplugin/man.vim
 nnoremap K :Man <cword><CR>
 nnoremap <leader>K :!man <cword><CR>
 
-" Standard copy paste hotkeys
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <C-r><C-o>+
-
-" Conque-term
-nnoremap :bash :ConqueTermSplit bash<CR>
-
 " ######## F I L E T Y P E S ######## "
-" autocmd FileType make set listchars=ptab:>.
+autocmd FileType make set listchars=ptab:>.
 
-
-" ######## C O L O R T H E M E S ######## "
+" ######## C O L O R S C H E M E S ######## "
 
 if &diff
-" molokai
-   let g:molokai_original = 1
-   color molokai
+    color github
 else
-   color tomorrow
+    color Tomorrow-Night-Eighties
 endif
