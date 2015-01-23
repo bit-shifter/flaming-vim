@@ -126,7 +126,7 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>v V`]
 
 " ######## P L U G I N S ######## "
-nmap <silent> <C-n> :NERDTreeToggle<CR>
+nmap <silent> <leader>n :NERDTreeToggle<CR>
 
 " Open NERDTree automatically when Vim starts up if no files were specified
 autocmd StdinReadPre * let s:std_in=1

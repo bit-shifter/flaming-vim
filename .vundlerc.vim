@@ -10,6 +10,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'mileszs/ack.vim.git'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'majutsushi/tagbar.git'
+Plugin 'bling/vim-airline'
 
 " ######## C O L O R S C H E M E S ######## "
 Plugin 'tomasr/molokai'
