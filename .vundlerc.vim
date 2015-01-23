@@ -17,6 +17,8 @@ Plugin 'tomasr/molokai'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'endel/vim-github-colorscheme'
 
+" ######## T M U X - I N T E G R A T I O N ######## "
+Bundle 'christoomey/vim-tmux-navigator'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
