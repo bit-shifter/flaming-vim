@@ -92,7 +92,6 @@ nnoremap ; :
 
 " ######## S P L I T S ########
 nnoremap vsplit <C-w>s<C-w>j
-nnoremap hsplit <C-w>v<C-w>l
 
 " makes tab key match bracket pairs for moving around
 nnoremap <tab> %
